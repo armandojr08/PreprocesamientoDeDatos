@@ -10,6 +10,9 @@ library(lattice)
 # Datos -------------------------------------------------------------------
 
 data("airquality")
+data("mammalsleep")
+
+# 1. Data: New York Air Quality Measurements ------------------------------
 
 
 # Exploracion basica de datos ---------------------------------------------
@@ -54,4 +57,25 @@ imp_air_reg$imp$Ozone
 imp_air_reg$imp$Solar.R
 stripplot(imp_air_reg, pch = 19, xlab = "Numeros imputados")
 imp_air_reg <- complete(imp_air_reg)
+
+
+
+# 2. Data: Mammal sleep data ----------------------------------------------
+
+data("mammalsleep")
+
+
+# Exploracion basica 
+describe(mammalsleep)
+df_status(mammalsleep)
+profiling_num(mammalsleep)
+
+# Exploracion de valores faltantes
+aggr(mammalsleep, numbers = T, sortVars = T)
+md.pattern(mammalsleep)
+
+# Distribicion por pares de variables que contienen NA's
+marginplot(mammalsleep[, c(4,5)])
+
+#
 
